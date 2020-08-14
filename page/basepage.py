@@ -1,3 +1,4 @@
+import yaml
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from appium import webdriver
@@ -55,3 +56,14 @@ class BasePage:
         WebDriverWait(self.driver,10).until(lambda x:x.find_element(by,locator))
     def implicitly_wait(self,no):
         self.driver.implicitly_wait(no)
+    def step_yaml(self,path):
+        with open(path,encoding='utf-8') as f:
+            datas = yaml.safe_load(f)
+        for data in datas:
+            if 'by' in data.keys():
+                step=self.find(data['by'], data['locator'])
+            if 'locator' in data.keys():
+                if 'click'==data['action']:
+                    step.click()
+                elif 'send' ==data['action']:
+                    step.send_keys(step['value'])
