@@ -10,5 +10,6 @@ from page.basepage import BasePage
 
 class Market(BasePage):
     def goto_search(self):
-        self.find_click(By.ID, 'com.xueqiu.android:id/action_search')
+        self.step_yaml('../data/market.yaml','goto_search')
+        # self.find_click(By.ID, 'com.xueqiu.android:id/action_search')
         return Search(self.driver)

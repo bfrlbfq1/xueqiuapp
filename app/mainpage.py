@@ -20,10 +20,11 @@ class MainPage(BasePage):
         #     if 'locator' in data.keys():
         #         if 'click'==data['action']:
         #             step.click()
-        self.step_yaml('../data/main.yaml')
+        self.step_yaml('../data/main.yaml','goto_market')
         return Market(self.driver)
     def goto_back(self):
         self.driver.implicitly_wait(30)
         self.find(By.XPATH,'//*[@resource-id="com.xueqiu.android:id/post_status"]').click()
         self.find(By.XPATH, '//*[@resource-id="android:id/tabs"]//*[@text="行情"]').click()
+        self.implicitly_wait(10)
         return

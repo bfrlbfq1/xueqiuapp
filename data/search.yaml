@@ -1,0 +1,9 @@
+search_input:
+  - by: id
+    locator: 'com.xueqiu.android:id/search_input_text'
+    action: send
+    value: ${stock_name}
+search_click:
+  - by: xpath
+    locator: '//*[@resource-id="com.xueqiu.android:id/listview"]//*[@text="${stock_name}"]'
+    action: click

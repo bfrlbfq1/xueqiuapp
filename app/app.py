@@ -19,7 +19,7 @@ class App(BasePage):
             self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', cap_des)
         else:
             self.driver.launch_app()
-        self.driver.implicitly_wait(10)
+        self.implicitly_wait(10)
         return self
 
     def goto_main_app(self):
